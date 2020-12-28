@@ -122,11 +122,5 @@ const styles = StyleSheet.create({
       color: Colors.creme,
       position: "relative",
     },
-    eye: {
-      position: "absolute",
-      right: 25,
-      bottom: 305,
-  
-    }
   });
 export default SignInScreen

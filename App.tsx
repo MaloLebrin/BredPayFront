@@ -5,7 +5,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View } from 'react-native';
 
-import SignInScreen from './src/screens/SignInScreen'
+import SignInScreen from './src/screens/SignInScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -58,6 +59,12 @@ export default function App() {
             options={{ header: () => null, animationEnabled: false }}
           >
             {() => <SignInScreen API={API} setUserData={setUserData} setToken={setToken}/>}
+          </Stack.Screen>
+          <Stack.Screen
+            name="SignUp"
+            options={{ header: () => null, animationEnabled: false }}
+          >
+            {() => <SignUpScreen API={API} setUserData={setUserData} setToken={setToken} />}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
