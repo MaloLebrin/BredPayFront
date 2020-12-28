@@ -32,6 +32,16 @@ export default function App() {
     setUser(user)
   }
 
+  useEffect(() => {
+    const checkToken = async () => {
+      const userToken : any  = await AsyncStorage.getItem('userToken');
+      setIsLoading(false)
+      setUserToken(userToken)
+    };
+
+    checkToken();
+  },[])
+
   return (
     <NavigationContainer>
         {/* <Stack.Navigator initialRouteName="SignIn">
