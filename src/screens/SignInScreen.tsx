@@ -5,13 +5,13 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import Colors from "../assets/colors"
 import axios from "axios";
 
-type HeaderType = {
+type SignInType = {
     API: String,
     setToken: Function,
     setUserData: Function
 }
 
-const SignInScreen = ({API, setToken, setUserData }: HeaderType) => {
+const SignInScreen = ({API, setToken, setUserData }: SignInType) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [data, setData] = useState()
