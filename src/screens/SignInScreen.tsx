@@ -7,20 +7,36 @@ import axios from "axios";
 
 type HeaderType = {
     API: String,
+    setToken: Function,
+    setUserData: Function
 }
 
-const SignInScreen = ({API}: HeaderType) => {
+const SignInScreen = ({API, setToken, setUserData }: HeaderType) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [data, setData] = useState()
     const navigation = useNavigation();
 
-    const onSubmit = async () => {}
+    const onSubmit = async () => {
+        if(email && password) {
+            try {
+                const response = await axios.post(
+                    `${API}user/login`,
+                    { email, password}
+                )
+                setUserData(response.data)
+                setToken(response.data.token)
+                
+            } catch (error) {
+                alert(error.response.data.error);
+            }
+        }
+    }
 
     return (
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
             <View style={styles.wrapper}>
-                {/* <Image style={styles.logo} source={require('../assets/airbnbwhite.png')} /> */}
+                {/* <Image style={styles.logo} source={require('../assets/')} /> */}
                 <Text style={styles.title}>Login</Text>
                 <TextInput placeholder="Email"
                 placeholderTextColor={Colors.creme}

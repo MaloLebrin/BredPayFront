@@ -18,6 +18,8 @@ export default function App() {
   const API = "http://localhost:3000/"
 
   const setToken = async (token: string) => {
+    console.log(token);
+    
     if (token) {
       await AsyncStorage.setItem('userToken', token)
     } else {
@@ -27,6 +29,8 @@ export default function App() {
   }
 
   const setUserData = async (user: Object) => {
+    console.log(user);
+    
     if (user) {
       const USER = JSON.stringify(user);
       await AsyncStorage.setItem('user', USER);
@@ -53,7 +57,7 @@ export default function App() {
             name="SignIn"
             options={{ header: () => null, animationEnabled: false }}
           >
-            {() => <SignInScreen API={API}/>}
+            {() => <SignInScreen API={API} setUserData={setUserData} setToken={setToken}/>}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
