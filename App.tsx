@@ -15,6 +15,8 @@ export default function App() {
   const [userToken, setUserToken] = useState(String)
   const [user, setUser] = useState(Object)
 
+  const API = "http://localhost:3000/"
+
   const setToken = async (token: string) => {
     if (token) {
       await AsyncStorage.setItem('userToken', token)
@@ -51,7 +53,7 @@ export default function App() {
             name="SignIn"
             options={{ header: () => null, animationEnabled: false }}
           >
-            {() => <SignInScreen />}
+            {() => <SignInScreen API={API}/>}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>

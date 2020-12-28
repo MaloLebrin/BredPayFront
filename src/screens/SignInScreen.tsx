@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import { Text, TextInput, View, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import Colors from "../assets/colors"
 import axios from "axios";
 
-const SignInScreen = () => {
+type HeaderType = {
+    API: String,
+}
+
+const SignInScreen = ({API}: HeaderType) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [data, setData] = useState()
@@ -18,13 +23,13 @@ const SignInScreen = () => {
                 {/* <Image style={styles.logo} source={require('../assets/airbnbwhite.png')} /> */}
                 <Text style={styles.title}>Login</Text>
                 <TextInput placeholder="Email"
-                placeholderTextColor="#E1E1E1"
+                placeholderTextColor={Colors.creme}
                 keyboardType={"email-address"}
                 style={styles.textInput}
                 onChangeText={email => setEmail(email)}
                 />
                 <TextInput placeholder="Password"
-                placeholderTextColor="#E1E1E1"
+                placeholderTextColor={Colors.creme}
                 secureTextEntry={true}
                 style={styles.textInput}
                 onChangeText={password => setPassword(password)}
@@ -51,7 +56,7 @@ const SignInScreen = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#F35960",
+      backgroundColor: Colors.black,
       alignItems: "center",
       justifyContent: "center"
     },
@@ -64,7 +69,7 @@ const styles = StyleSheet.create({
     },
     title: {
       fontSize: 24,
-      color: "#e1e1e1",
+      color: Colors.creme,
       marginVertical: 20,
       fontWeight: "bold"
     },
@@ -78,27 +83,27 @@ const styles = StyleSheet.create({
       width: 190,
       height: 65,
       borderRadius: 50,
-      backgroundColor: "white",
+      backgroundColor: Colors.creme,
       justifyContent: "center",
       alignItems: "center",
       marginTop: 50
     },
     buttonText: {
-      color: "#F35960",
+      color: Colors.black,
       fontSize: 24
     },
     Signup: {
       marginTop: 15,
-      color: "white",
+      color: Colors.creme,
       textDecorationLine: "underline",
     },
     textInput: {
-      borderBottomColor: "white",
+      borderBottomColor: Colors.creme,
       borderBottomWidth: 1,
       width: 330,
       height: 45,
       marginBottom: 30,
-      color: "white",
+      color: Colors.creme,
       position: "relative",
     },
     eye: {
