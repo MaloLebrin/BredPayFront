@@ -7,6 +7,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import SignInScreen from './src/screens/SignInScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
+import HomeScreen from './src/screens/HomeScreen';
+
+import Colors from './src/assets/colors'
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -53,6 +57,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      {isLoading ? null : userToken === null ? (
         <Stack.Navigator initialRouteName="SignIn">
           <Stack.Screen
             name="SignIn"
@@ -66,7 +71,51 @@ export default function App() {
           >
             {() => <SignUpScreen API={API} setUserData={setUserData} setToken={setToken} />}
           </Stack.Screen>
+        </Stack.Navigator>)
+        :(
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Tab"
+            options={{ header: () => null, animationEnabled: false }}
+          >
+            {()=> (
+              <Tab.Navigator
+                tabBarOptions={{
+                  activeTintColor: Colors.black,
+                  inactiveTintColor: Colors.black,
+                  style: {
+                    backgroundColor: Colors.creme
+                  }
+                }}
+              >
+                <Tab.Screen
+                    name="Home"
+                    options={{
+                      tabBarLabel: "Home",
+                      tabBarIcon: ({ color, size }) => (
+                        <Ionicons name={"ios-home"} size={size} color={color} />
+                      ),
+                    }}
+                  >
+                    {() => (
+                      <Stack.Navigator>
+                        <Stack.Screen
+                          name="Home"
+                          options={{
+                            headerStyle: { backgroundColor: Colors.creme, height: 90 },
+                            headerTitleAlign: "center",
+                          }}
+                        >
+                          {() => <HomeScreen API={API}/>}
+                        </Stack.Screen>
+                    </Stack.Navigator>
+                    )}
+                  </Tab.Screen>
+              </Tab.Navigator>
+            )}
+          </Stack.Screen>
         </Stack.Navigator>
+        )}
       </NavigationContainer>
   );
 }
