@@ -54,8 +54,7 @@ const CompanyCard= ({ data }: CompanyCardType) => {
                     <Text style={styles.title}>{data.name}</Text>
                     <View style={styles.companyInfos}>
                         <Text style={styles.description}>{data.description}</Text>
-                        <ScrollView  horizontal={true}>
-                            <MaterialCommunityIcons name="food-croissant" size={24} color={Colors.greyDark} />
+                        <ScrollView  horizontal={true} style={styles.productsWrapper}>
                             {data.products.map((element, index) => {
                                 return (
                                     <ProductElement elementData={element} key={index} />
@@ -99,6 +98,10 @@ const styles = StyleSheet.create({
     },
     companyInfos: {
         flexDirection: "column",
+    },
+    productsWrapper: {
+        flexDirection: "row",
+        margin: 10
     },
     contactWrapper: {
         flexDirection: "row",

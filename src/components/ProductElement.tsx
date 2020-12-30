@@ -13,7 +13,7 @@ interface elementData {
 
 const ProductElement = ({ elementData } : ProductElementType) => {
     return elementData ? (
-        <View>
+        <View style={styles.productWrapper}>
             <Text>{elementData.productName}</Text>
             <Image 
                 style={styles.img}
@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         borderWidth: 1,
         borderColor: Colors.greyDark
+    },
+    productWrapper : {
+        flexDirection: 'column',
+        alignItems: "center",
+        marginRight: 10,
     }
 })
 export default ProductElement
