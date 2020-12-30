@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/core";
-import { View, ActivityIndicator, TouchableOpacity, SafeAreaView, } from "react-native";
+import { View, ActivityIndicator, TouchableOpacity, SafeAreaView, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
 import axios from "axios";
-import ProductCard from '../components/ProductCard'
+import CompanyCard from '../components/CompanyCard'
 import Colors from '../assets/colors'
 
 type HomeScreenType = {
@@ -42,18 +42,26 @@ const HomeScreen = ({API}: HomeScreenType) => {
                 <ActivityIndicator size="large" />
             </View>
         ) : (
-            <SafeAreaView>
+            <SafeAreaView style={styles.homeScreen}>
 
-                {/* <FlatList
+                <FlatList
                     data={data}
-                    keyExtractor={item => String(item._id)}
+                    keyExtractor={(_, index) => String(index)}
                     renderItem={({ item }: any) => (
-                        <TouchableOpacity onPress={() => navigation.navigate("Room", { id: item._id })}>
-                            <Card data={item} />
+                        <TouchableOpacity 
+                        // onPress={() => navigation.navigate("Room", { id: item._id })}
+                        >
+                            <CompanyCard data={item} />
                         </TouchableOpacity>
                     )}
-                /> */}
+                />
             </SafeAreaView>
         );
 }
+
+const styles  = StyleSheet.create({
+    homeScreen: {
+        backgroundColor: Colors.creme
+    }
+})
 export default HomeScreen;
