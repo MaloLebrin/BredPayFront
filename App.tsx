@@ -23,7 +23,7 @@ export default function App() {
   const API = "http://localhost:3000/"
 
   const setToken = async (token: string) => {
-    console.log(token);
+    // console.log(token);
     
     if (token) {
       await AsyncStorage.setItem('userToken', token)
@@ -34,7 +34,7 @@ export default function App() {
   }
 
   const setUserData = async (user: Object) => {
-    console.log(user);
+    // console.log(user);
     
     if (user) {
       const USER = JSON.stringify(user);
@@ -81,10 +81,10 @@ export default function App() {
             {()=> (
               <Tab.Navigator
                 tabBarOptions={{
-                  activeTintColor: Colors.black,
-                  inactiveTintColor: Colors.black,
+                  activeTintColor: Colors.creme,
+                  inactiveTintColor: Colors.white,
                   style: {
-                    backgroundColor: Colors.creme
+                    backgroundColor: Colors.greyDark
                   }
                 }}
               >
@@ -102,7 +102,7 @@ export default function App() {
                         <Stack.Screen
                           name="Home"
                           options={{
-                            headerStyle: { backgroundColor: Colors.creme, height: 90 },
+                            headerStyle: { backgroundColor: Colors.greyDark, height: 90 },
                             headerTitleAlign: "center",
                           }}
                         >
