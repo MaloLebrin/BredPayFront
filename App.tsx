@@ -8,6 +8,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import SignInScreen from './src/screens/SignInScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
 
 import Colors from './src/assets/colors'
 import { Ionicons, AntDesign } from "@expo/vector-icons";
@@ -111,6 +112,30 @@ export default function App() {
                     </Stack.Navigator>
                     )}
                   </Tab.Screen>
+                  <Tab.Screen
+                    name="Settings"
+                    options={{
+                      tabBarLabel: "Settings",
+                      tabBarIcon: ({ color, size }) => (
+                        <AntDesign name="setting" size={24} color={color} />
+                      ),
+                    }}
+                  >
+                    {() => (
+                      <Stack.Navigator>
+                        <Stack.Screen
+                          name="Settings"
+                          options={{
+                            headerStyle: { backgroundColor: Colors.greyDark, height: 90 },
+                            headerTitleAlign: "center",
+                          }}
+                        >
+                          {() => <SettingsScreen setToken={setToken}/>}
+                        </Stack.Screen>
+                    </Stack.Navigator>
+                    )}
+                  </Tab.Screen>
+
               </Tab.Navigator>
             )}
           </Stack.Screen>
