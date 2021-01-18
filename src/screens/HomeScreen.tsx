@@ -61,7 +61,8 @@ const HomeScreen = ({API}: HomeScreenType) => {
 
 const styles  = StyleSheet.create({
     homeScreen: {
-        backgroundColor: Colors.creme
+        backgroundColor: Colors.creme,
+        flex: 1,
     }
 })
 export default HomeScreen;
